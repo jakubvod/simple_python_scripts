@@ -1,3 +1,3 @@
 # python_scripts
 
-SUFFIX READER - reads all suffixes in a dir with optional filtering
+SUFFIX READER - Reads all suffixes in a directory (with optional filtering). The script must be placed inside the target directory.
