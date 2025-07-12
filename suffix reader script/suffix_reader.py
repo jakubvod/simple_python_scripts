@@ -43,5 +43,5 @@ if filter_suffix == "YES":
                 print(curr_file.name)
 
 print("--------------------------------")
-print("Have a nice day!")
+input("\nStiskni COKOLIV pro ukončení...\n")
 
