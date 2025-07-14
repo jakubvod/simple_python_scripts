@@ -16,7 +16,6 @@ sp = Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
                                                scope=scope,
                                                cache_path=cache_path))
 
-#track_uri = "spotify:track:6mFkJmJqdDVQ1REhVfGgd1" # Pink Floyd - Wish You Were Here
 
 def get_artist_id_name(artist_name: str) -> tuple[str, str] | None:
     searched = sp.search(q=artist_name, type="artist", limit=1)
