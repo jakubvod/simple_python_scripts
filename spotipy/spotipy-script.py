@@ -24,11 +24,11 @@ def play_pink_floyd():
     if not devices["devices"]:
         print("No active devices found. Open spotify on a device and try again.")
         return
+    print("Playing Pink Floyd - Wish You Were Here")
     device_id = devices["devices"][0]["id"]
     sp.start_playback(device_id=device_id, uris=[track_uri], position_ms=94000)  # Start playback at 1:34:00
 
 def main():
-    print("\n-----------------------------------\nPlaying Pink Floyd - Wish You Were Here\n-----------------------------------\n")
     play_pink_floyd()
 
 if __name__ == "__main__":
