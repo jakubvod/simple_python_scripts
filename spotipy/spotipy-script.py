@@ -1,6 +1,7 @@
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth
 from pathlib import Path
+import random
 
 script_dir = Path(__file__).parent
 cache_path = script_dir / ".cache"
@@ -15,21 +16,39 @@ sp = Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
                                                scope=scope,
                                                cache_path=cache_path))
 
+#track_uri = "spotify:track:6mFkJmJqdDVQ1REhVfGgd1" # Pink Floyd - Wish You Were Here
 
-track_uri = "spotify:track:6mFkJmJqdDVQ1REhVfGgd1" # Pink Floyd - Wish You Were Here
+def get_artist_id_name(artist_name: str) -> tuple[str, str] | None:
+    searched = sp.search(q=artist_name, type="artist", limit=1)
+    if not searched["artists"]["items"]:
+        print("Couldn't find any artist with that name.")
+        return None
+    return searched["artists"]["items"][0]["id"], searched["artists"]["items"][0]["name"]
 
-def play_pink_floyd():
+def play_top_track_random(artist_name: str) -> None:
+    result = get_artist_id_name(artist_name)
+    if not result:
+        return None
+    artist_id, name  = result
+    top_tracks = sp.artist_top_tracks(artist_id)["tracks"]
+
+    if not top_tracks:
+        print("Artist has no tracks.")
+        return None
+    
+    track = random.choice(top_tracks)
+    print(f"\n------------------------------------------\nPlaying {track['name']} by {name}\n------------------------------------------\n")
+
     devices = sp.devices()
-    print("Devices:", devices)
     if not devices["devices"]:
-        print("No active devices found. Open spotify on a device and try again.")
+        print("\n------------------------------------------\nNo active devices found. Open spotify on a device and try again.\n------------------------------------------\n")
         return
-    print("Playing Pink Floyd - Wish You Were Here")
     device_id = devices["devices"][0]["id"]
-    sp.start_playback(device_id=device_id, uris=[track_uri], position_ms=94000)  # Start playback at 1:34:00
+    sp.start_playback(device_id=device_id, uris=[track["uri"]])
 
-def main():
-    play_pink_floyd()
+def main() -> None:
+    chosen_artist = input("\n------------------------------------------\nEnter the name of the artist: ")
+    play_top_track_random(chosen_artist)
 
 if __name__ == "__main__":
     main()
