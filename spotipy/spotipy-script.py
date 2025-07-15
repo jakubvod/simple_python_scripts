@@ -26,11 +26,11 @@ def get_artist_id_name(artist_name: str) -> tuple[str, str] | None:
     for i, artist in enumerate(searched["artists"]["items"]):
         print(f"{i + 1}. {artist["name"]} (Followers: {artist["followers"]["total"]})")
     
-    chosen = input("------------------------------------------\nChoose an artist by number: (e.g. 1, 2, 3)\n------------------------------------------\n")
-    if not chosen.isdigit() or int(chosen) < 1 or int(chosen) > len(searched["artists"]["items"]):
+    chosen = int(input("------------------------------------------\nChoose an artist by number: (e.g. 1, 2, 3)\n------------------------------------------\n"))
+    if not str(chosen).isdigit() or chosen < 1 or chosen > len(searched["artists"]["items"]):
         print("Invalid choice. Please enter a valid number.")
         return None
-    chosen_index = int(chosen) - 1
+    chosen_index = chosen - 1
     return searched["artists"]["items"][chosen_index]["id"], searched["artists"]["items"][chosen_index]["name"]
 
 def play_top_track_random(artist_name: str) -> None:
