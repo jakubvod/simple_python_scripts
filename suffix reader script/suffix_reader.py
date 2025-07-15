@@ -43,5 +43,5 @@ if filter_suffix == "YES":
                 print(curr_file.name)
 
 print("--------------------------------")
-input("\nStiskni COKOLIV pro ukončení...\n")
+input("\nDone! Press anything...\n")
 
