@@ -18,11 +18,20 @@ sp = Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
 
 
 def get_artist_id_name(artist_name: str) -> tuple[str, str] | None:
-    searched = sp.search(q=artist_name, type="artist", limit=1)
+    searched = sp.search(q=artist_name, type="artist", limit=5)
     if not searched["artists"]["items"]:
         print("Couldn't find any artist with that name.")
         return None
-    return searched["artists"]["items"][0]["id"], searched["artists"]["items"][0]["name"]
+    print("\n------------------------------------------\nFound the following artists:\n-------------------------------------------\n")
+    for i, artist in enumerate(searched["artists"]["items"]):
+        print(f"{i + 1}. {artist["name"]} (Followers: {artist["followers"]["total"]})")
+    
+    chosen = input("------------------------------------------\nChoose an artist by number: (e.g. 1, 2, 3)\n------------------------------------------\n")
+    if not chosen.isdigit() or int(chosen) < 1 or int(chosen) > len(searched["artists"]["items"]):
+        print("Invalid choice. Please enter a valid number.")
+        return None
+    chosen_index = int(chosen) - 1
+    return searched["artists"]["items"][chosen_index]["id"], searched["artists"]["items"][chosen_index]["name"]
 
 def play_top_track_random(artist_name: str) -> None:
     result = get_artist_id_name(artist_name)
@@ -36,7 +45,7 @@ def play_top_track_random(artist_name: str) -> None:
         return None
     
     track = random.choice(top_tracks)
-    print(f"\n------------------------------------------\nPlaying {track['name']} by {name}\n------------------------------------------\n")
+    print(f"------------------------------------------\nPlaying {track['name']} by {name}\n------------------------------------------\n")
 
     devices = sp.devices()
     if not devices["devices"]:
