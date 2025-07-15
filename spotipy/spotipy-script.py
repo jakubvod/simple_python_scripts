@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+import os
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth
 from pathlib import Path
@@ -6,9 +8,12 @@ import random
 script_dir = Path(__file__).parent
 cache_path = script_dir / ".cache"
 
-client_id = "12e742c3462e46e982c9985b856d8b94"
-client_secret = "1a612e4b00a34822997a41a451196b27"
-redirect_uri = "http://localhost:8888/callback"
+load_dotenv()
+
+
+client_id = os.getenv("CLIENT_ID")
+client_secret = os.getenv("CLIENT_SECRET")
+redirect_uri = os.getenv("REDIRECT_URI")
 scope = "user-modify-playback-state,user-read-playback-state"
 sp = Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
                                                client_secret=client_secret,
