@@ -1,5 +1,7 @@
 # python_scripts
-
+**❗FOR LEARNING PURPOSES❗**
+- Small and simple Python scripts I wrote while learning and refreshing my skills.
+- These are just practice projects to explore libraries and concepts like filesystem handling or API usage.
 ## 📂 SUFFIX READER - Reads all suffixes in a directory (with optional filtering). The script must be placed inside the target directory.
 **Skills used:**
 - Working with the file system using pathlib.
