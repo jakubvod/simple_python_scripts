@@ -6,7 +6,7 @@
 **Skills used:**
 - Working with the file system using pathlib.
 - Handling user input.
-## 🎵 SPOTIPY SCRIPT - Randomly plays one of the artist's top 10 most popular songs (given by input).
+## 🎵 SPOTIPY SCRIPT - Given an artist input, the script randomly plays one of their 10 most popular songs (Spotify premium required).
 **Skills used:**
 - Managing sensitive data with ".env" and ".gitignore".
 - Working with Spotipy and OAuth.
