@@ -10,3 +10,6 @@
 **Skills used:**
 - Managing sensitive data with ".env" and ".gitignore".
 - Working with Spotipy and OAuth.
+
+**⚠️ Note: The script does not currently work correctly.**
+- To use it, create your own `.env` file containing your `CLIENT_ID`, `CLIENT_SECRET`, and `REDIRECT_URI`.
