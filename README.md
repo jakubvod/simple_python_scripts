@@ -13,3 +13,4 @@
 
 **⚠️ Note**
 - To use it, create your own `.env` file containing your `CLIENT_ID`, `CLIENT_SECRET`, and `REDIRECT_URI` in the samy directory as the script.
+- You can get those from your app at [Spotify's Dashboard](https://developer.spotify.com/dashboard).
