@@ -11,5 +11,5 @@
 - Managing sensitive data with ".env" and ".gitignore".
 - Working with Spotipy and OAuth.
 
-**⚠️ Note **
-- To use spotipy script, create your own `.env` file containing your `CLIENT_ID`, `CLIENT_SECRET`, and `REDIRECT_URI` in the samy directory as the script.
+**⚠️ Note**
+- To use it, create your own `.env` file containing your `CLIENT_ID`, `CLIENT_SECRET`, and `REDIRECT_URI` in the samy directory as the script.
