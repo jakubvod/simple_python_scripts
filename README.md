@@ -11,6 +11,13 @@
 - Managing sensitive data with ".env" and ".gitignore".
 - Working with Spotipy and OAuth.
 
-**⚠️ Note**
-- To use it, create your own `.env` file containing your `CLIENT_ID`, `CLIENT_SECRET`, and `REDIRECT_URI` in the samy directory as the script.
-- You can get those from your app at [Spotify's Dashboard](https://developer.spotify.com/dashboard).
+> ⚠️ Note
+To use it, follow these steps.
+1. Create `.env` file with the following format:
+```
+CLIENT_ID = 'xxxxxxxxx'
+CLIENT_SECRET = 'xxxxxxxxx'
+REDIRECT_URI = 'http://localhost:8888/callback'
+```
+2. Get your ID and SECRET from [Spotify's Dashboard](https://developer.spotify.com/dashboard)
+   > (you need to create an app) and replace the xxxxxxxxx values with your credentials.
